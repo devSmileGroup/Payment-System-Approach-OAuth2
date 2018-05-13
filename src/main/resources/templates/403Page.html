@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Access Denied</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <!-- Include _menu.html -->
+    <!-- <th:block th:include="/_menu"></th:block> -->
+
+    <th:block th:include="fragments/header :: header"></th:block>
+
+    <h3 th:if="${message != null}" th:utext="${message}" style="color: red;"></h3>
+
+    <div th:if="${userInfo != null}" th:utext="${userInfo}"></div>
+
+</body>
+
+</html>

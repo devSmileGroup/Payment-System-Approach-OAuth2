@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>User Info</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+
+<body onload="myFunction()">
+    <!-- Include _menu.html -->
+    <!-- <th:block th:include="/_menu"></th:block> -->
+
+    <th:block th:include="fragments/header :: header"></th:block>
+
+    <a style="visibility: hidden;" th:href="@{/saveuser}">save</a>
+
+    <h2>User Info Page</h2>
+    <h3>Welcome :
+        <!-- <span th:utext="${#request.userPrincipal.name}"></span> -->
+    </h3>
+    <b>This is protected page!</b>
+
+    <br/>
+    <br/>
+
+    <!-- <div th:if="${userInfo != null}" th:utext="${userInfo}"></div> -->
+
+    <!-- <script>
+        function myFunction() {
+            $.get("http://localhost:8080/payment", function (data) {
+                // $(".result").html(data);
+                alert(data);
+            });
+        }
+    </script> -->
+
+</body>
+
+</html>

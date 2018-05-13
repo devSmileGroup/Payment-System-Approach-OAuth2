@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title th:utext="${title}"></title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Include _menu.html -->
+    <!-- <th:block th:include="/_menu"></th:block> -->
+
+    <th:block th:include="fragments/header :: header"></th:block>
+
+    <div class="container">
+        <div th:if="${not #lists.isEmpty(orders)}">
+            <h2>Order List</h2>
+            <table class="table table-striped">
+                <tr>
+                    <th>Order Id</th>
+                    <th>User Id</th>
+                    <th>Recipient Id</th>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Order Date</th>
+                    <th>Total Price</th>
+                </tr>
+                <tr th:each="order : ${orders}">
+                    <td th:text="${order.orderId}"></td>
+                    <td th:text="${order.userId}"></td>
+                    <td th:text="${order.recipientId}"></td>
+                    <td th:text="${order.productName}"></td>
+                    <td th:text="${order.quantity}"></td>
+                    <td th:text="${order.orderDate}"></td>
+                    <td th:text="${order.totalPrice}"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</body>
+
+</html>

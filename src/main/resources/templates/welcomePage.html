@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title th:utext="${title}"></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+
+<body onload="myFunction()">
+
+    <!-- Include _menu.html -->
+    <!-- <th:block th:include="/_menu"></th:block> -->
+
+    <th:block th:include="fragments/header :: header"></th:block>
+
+    <h2>Message :
+        <span th:utext="${message}"></span>
+    </h2>
+
+    <table align="center">
+        <tr>
+            <td>
+                <img height="250px" th:src="@{/images/thinking_in_java.jpg}" />
+            </td>
+        </tr>
+        <tr>
+            <table align="center">
+                <tr>
+                    <td>
+                        <h4>Price:</h4>
+                    </td>
+                    <td>
+                        <h4>1000 UAH</h4>
+                    </td>
+                </tr>
+            </table>
+        </tr>
+    </table>
+
+    <div th:if="${#request.userPrincipal != null}" id="parentElement">
+
+    </div>
+
+    <script>
+        function myFunction() {
+            $.get("http://localhost:8080/payment", function (data) {
+                document.getElementById("parentElement").innerHTML = data;
+            });
+        }
+    </script>
+</body>
+
+</html>

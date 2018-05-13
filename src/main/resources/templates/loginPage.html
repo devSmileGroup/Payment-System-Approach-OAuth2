@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Login</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="../static/css/social.css" th:href="@{/css/social.css}" rel="stylesheet" />
+  <link href="../static/css/login.css" th:href="@{/css/login.css}" rel="stylesheet" />
+  <link href="../static/css/main.css" th:href="@{/css/main.css}" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <!-- Include _menu.html -->
+  <!-- <th:block th:include="/_menu"></th:block> -->
+
+  <th:block th:include="fragments/header :: header"></th:block>
+
+  <h1>Login</h1>
+
+  <!-- /login?error=true -->
+  <div th:if="${#request.getParameter('error') == 'true'}" style="color:red;margin:10px 0px;">
+    Login Failed!!!
+    <br /> Reason :
+    <span th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}" th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">
+      Static summary
+    </span>
+  </div>
+
+  <h3>Enter user name and password:</h3>
+  <form name='f' th:action="@{/j_spring_security_check}" method='POST'>
+    <table align="center">
+      <tr>
+        <td>User:</td>
+        <td>
+          <input type='text' name='username' value=''>
+        </td>
+      </tr>
+      <tr>
+        <td>Password:</td>
+        <td>
+          <input type='password' name='password' />
+        </td>
+      </tr>
+      <tr>
+        <td>Remember Me?</td>
+        <td>
+          <input type="checkbox" name="remember-me" />
+        </td>
+      </tr>
+    </table>
+    <div align="center">
+      <button class="btn-size btn btn-primary btn-block" type="submit">Login</button>
+    </div>
+  </form>
+
+
+  <div>
+    <a class="fa fa-facebook btn-size btn btn-primary btn-block" href="/login/facebook">&emsp;Login with Facebook</a>
+  </div>
+  <div>
+    <a class="fa fa-google btn-size btn btn-primary btn-block" href="/login/google">&emsp;Login with Google</a>
+  </div>
+  <div>
+    <a class="fa fa-github btn-size btn btn-primary btn-block" href="/login/github">&emsp;Login with GitHub</a>
+  </div>
+
+  <div>
+    <p>Don't have an account?
+      <a th:href="@{/registration}">Click here to register</a>.</p>
+  </div>
+
+
+  <table align="center">
+    <tr>
+      <th width="80">Username</th>
+      <th>Password</th>
+    </tr>
+    <tr>
+      <td>dbuser1</td>
+      <td>123</td>
+    </tr>
+    <tr>
+      <td>dbadmin1</td>
+      <td>123</td>
+    </tr>
+  </table>
+
+</body>
+
+</html>
